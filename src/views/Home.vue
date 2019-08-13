@@ -2,14 +2,13 @@
    <div>
    <div class="section">
       <article
-        v-for="date in testData"
+        v-for="date in info"
         :key="date._id"
         class="media"
       >
         <AppMediaObject :data="date" />
       </article>
     </div>
-        <p>{{ info }}</p>
    </div>
 </template>
 

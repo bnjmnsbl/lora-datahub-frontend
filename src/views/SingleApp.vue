@@ -1,9 +1,12 @@
-
 <template>
   <div class="about">
     <div class="about-container">
     
-    <p>Single View</p> 
+    <h1 class="title"> {{ appName}} </h1>
+
+    <article v-for="sensors in info" :key="sensors._id"> 
+      <p> {{sensors.devId}}</p>
+    </article>
     </div>
   </div>
 </template>
@@ -13,22 +16,27 @@ import axios from 'axios';
 
 export default {
   name: 'home',
+     data() {
+    return {
+      info: null,
+    };
+  },
   props: {
-      _id: String,
-
+      id: String,
+      appName: String
+      
   },
   components: {
     
   },
- 
-  data() {
-    return {
-    }    
-  },
+
   
   mounted() {
+   
+    let url = 'http://localhost:3000/api/devices/' + this.id;
+    
     axios
-      .get('http://localhost:3000/api/apps')
+      .get(url)
       // eslint-disable-next-line no-return-assign
       .then(response => (this.info = response.data));
   },

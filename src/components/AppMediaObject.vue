@@ -8,23 +8,21 @@
     </figure>
     <div class="media-content">
       <div class="content">
-        <p>
           <strong>
-            <router-link 
-              :to="'app/' + data._id" class="navbar-item blue">
+            <router-link :to="{ name: 'apps', params: {id: data._id, appName: data.appId } }" class="appheadline blue">
+              <!-- ***:to="'app/' + data._id" class="navbar-item blue"> -->
               
              
             {{ data.appId }}</router-link>
-            <span class="tag is-small">#{{ data.uniqueId }}</span></strong>
-          <br>
-          {{ data.description }} <br>
+            <!-- <span class="tag is-small">#{{ data.uniqueId }}</span> -->
+            </strong>
+         
+          <p class="appContentText">
+          {{ data.description }} </p>
             <small class="is-size-7"> Location: {{ data.locationName }}
           </small>
           <small class="is-size-7 right"> Submitted by: {{ data.user }}
           </small>
-          
-        
-        </p>
       </div>
     </div>
     <div class="media-right">
@@ -51,7 +49,7 @@ export default {
   margin: 0 auto;
   border: 1px solid #312CA3!important;
   padding: 1em 1.5em 0.5em 1.5em;
-  border-radius: 0.3em;
+ 
 }
 
 .icon {
@@ -65,6 +63,11 @@ export default {
   border-radius: 20px;
 }
 
+.appheadline {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
 .blue {
   color: #312CA3
 }
@@ -76,5 +79,10 @@ export default {
 .icon {
   color:  #312CA3
 }
+
+.appContentText {
+  margin-bottom: 0px!important;
+}
+
 
 </style>

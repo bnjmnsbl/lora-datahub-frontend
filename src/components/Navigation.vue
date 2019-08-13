@@ -47,12 +47,13 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-primary">
+            <router-link to="/signup" class="button is-primary">
               <strong>Sign up</strong>
-            </a>
-            <a class="button is-light">
+            </router-link>
+            <router-link to="/login" class="button is-light">
               Log in
-            </a>
+            </router-link>
+            <span v-if="isLoggedIn"> | <a @click="logout">Logout</a></span>
           </div>
         </div>
       </div>
@@ -67,30 +68,41 @@ export default {
   name: 'Navigation',
   data() {
     return {
-      links: [
-        {
-          id: 0,
-          text: 'Hello World',
-          page: '/HelloWorld',
-        },
-        {
-          id: 1,
-          text: 'Home',
-          page: '/Home',
-        },
-        {
-          id: 2,
-          text: 'About',
-          page: '/About',
-        },
-        {
-          id: 3,
-          text: 'Contact',
-          page: '/Contact',
-        },
-      ],
+      // links: [
+      //   {
+      //     id: 0,
+      //     text: 'Hello World',
+      //     page: '/HelloWorld',
+      //   },
+      //   {
+      //     id: 1,
+      //     text: 'Home',
+      //     page: '/Home',
+      //   },
+      //   {
+      //     id: 2,
+      //     text: 'About',
+      //     page: '/About',
+      //   },
+      //   {
+      //     id: 3,
+      //     text: 'Contact',
+      //     page: '/Contact',
+      //   },
+      // ],
     };
   },
+  computed: {
+    isLoggedIn: function() {return this.$store.getters.isLoggedIn}
+  },
+  methods: {
+    logout: function() {
+      this.$store.dispatch('logout')
+      .then(() => {
+        this.$router.push('/login')
+      })
+    }
+  }
 };
 </script>
 
