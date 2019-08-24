@@ -1,4 +1,7 @@
-# 26_lora_frontend
+# LoRa DataHub Frontend
+
+Vue.js frontend that consumes the Fastify API 
+
 
 ## Project setup
 ```
