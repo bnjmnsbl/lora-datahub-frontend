@@ -6,6 +6,7 @@ import SingleApp from './views/SingleApp.vue';
 import Login from './views/Login.vue';
 import Signup from './views/Signup.vue';
 import Profile from './views/Profile.vue';
+import Callback from './views/Callback.vue';
 import store from './store';
 
 Vue.use(Router);
@@ -47,6 +48,11 @@ let router = new Router({
       meta: {
         guest: true
       }
+    },
+    { path: '/callback', 
+    name: 'callback',
+    component: Callback,
+  
     },
     { path: '/profile', 
       name: 'profile',
