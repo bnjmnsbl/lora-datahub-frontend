@@ -47,13 +47,16 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <router-link to="/signup" class="button is-primary">
+            <span v-if="!isLoggedIn">
+            <router-link to="/signup" class="button is-light">
               <strong>Sign up</strong>
             </router-link>
+            
             <router-link to="/login" class="button is-light">
               Log in
             </router-link>
-            <span v-if="isLoggedIn"> | <a @click="logout">Logout</a></span>
+            </span>
+            <span v-if="isLoggedIn"><a class="button is-light" @click="logout">Logout</a></span>
           </div>
         </div>
       </div>
@@ -153,4 +156,10 @@ export default {
     color: #312CA3;
     font-size: 1.1rem;
 }
+
+#datahub-navbar > div.navbar-end > div > div > span > a {
+    color: #312CA3;
+    font-size: 1.1rem;
+}
+
 </style>

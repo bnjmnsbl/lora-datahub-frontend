@@ -5,7 +5,7 @@ import About from './views/About.vue';
 import SingleApp from './views/SingleApp.vue';
 import Login from './views/Login.vue';
 import Signup from './views/Signup.vue';
-import Secure from './views/Secure.vue';
+import Profile from './views/Profile.vue';
 import store from './store';
 
 Vue.use(Router);
@@ -32,9 +32,7 @@ let router = new Router({
       name: 'apps',
       component: SingleApp,
       props: true,
-      meta: {
-        requiresAuth: true //testing only, remove later
-      }
+     
     },
     { path: '/login', 
       name: 'login',
@@ -50,9 +48,9 @@ let router = new Router({
         guest: true
       }
     },
-    { path: '/secure', 
-      name: 'secure',
-      component: Secure,
+    { path: '/profile', 
+      name: 'profile',
+      component: Profile,
       meta: {
         requiresAuth: true
       }
@@ -66,7 +64,6 @@ router.beforeEach((to, from, next) => {
       next();
       return;
     }
-    console.log("This route would require authentication");
     next('/login');
   } else {
       next();
