@@ -4,11 +4,14 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import Axios from 'axios'
+import AuthPlugin from './plugins/auth';
 
+Vue.use(AuthPlugin);
 //this enables other components to access Axios via this.$http
 Vue.prototype.$http = Axios;
 
 const token = localStorage.getItem('token');
+
 if (token) {
   Vue.prototype.$http.defaults.headers.common['Authorization'] = token;
 }

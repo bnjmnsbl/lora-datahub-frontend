@@ -1,20 +1,20 @@
+<!-- src/components/Callback.vue -->
+
 <template>
-  <div class="about">
-    <div class="about-container">
-    
-    <p>Callback Test Page</p> 
-    </div>
+  <div>
+    <p>Loading...</p>
   </div>
 </template>
 
-<style>
-.about {
-  margin-top: 3rem;
-}
-
-.about-container {
-  max-width: 600px;
-  margin: auto;
-  text-align: left;
-}
-</style>
+<script>
+export default {
+  methods: {
+    handleLoginEvent(data) {
+      this.$router.push(data.state.target || "/");
+    }
+  },
+  created() {
+    this.$auth.handleAuthentication();
+  }
+};
+</script>
