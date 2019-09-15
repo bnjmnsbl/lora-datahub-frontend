@@ -6,7 +6,8 @@ import SingleApp from './views/SingleApp.vue';
 import Login from './views/Login.vue';
 import Signup from './views/Signup.vue';
 import Profile from './views/Profile.vue';
-import store from './store';
+import Callback from './views/Callback.vue';
+import auth from './auth/authService';
 
 Vue.use(Router);
 
@@ -22,10 +23,6 @@ let router = new Router({
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      // component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
       component: About
     },
     { path: '/app/:id', 
@@ -44,9 +41,11 @@ let router = new Router({
     { path: '/signup', 
       name: 'signup',
       component: Signup,
-      meta: {
-        guest: true
-      }
+    },
+    { path: '/callback', 
+    name: 'callback',
+    component: Callback,
+  
     },
     { path: '/profile', 
       name: 'profile',
@@ -60,17 +59,12 @@ let router = new Router({
 
 router.beforeEach((to, from, next) => {
   if(to.matched.some(record => record.meta.requiresAuth)) {
-    if (store.getters.isLoggedIn) {
-      next();
-      return;
+    if (auth.isAuthenticated()) {
+      return next();
     }
-    next('/login');
-  } else {
-      next();
-  }
+    auth.login({target: to.path});
+  } 
+  next();
 });
-
-
-
 
 export default router;

@@ -6,9 +6,9 @@
     aria-label="main navigation"
   >
     <div class="navbar-brand">
-      <a
+      <router-link
         class="navbar-item"
-        href="/"
+        to="/"
       >
         <img
           src="../assets/images/DataHub_Logo.png"
@@ -27,7 +27,7 @@
           <span aria-hidden="true" />
           <span aria-hidden="true" />
         </a>
-      </a>
+      </router-link>
     </div>
 
     <div
@@ -47,16 +47,17 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <span v-if="!isLoggedIn">
-            <router-link to="/signup" class="button is-light">
+            <span v-if="!isAuthenticated">
+            <!--router-link to="/signup" class="button is-light">
               <strong>Sign up</strong>
-            </router-link>
+            </router-link-->
             
-            <router-link to="/login" class="button is-light">
-              Log in
-            </router-link>
+            <button class="button is-light" @click.prevent="login">Login</button>
             </span>
-            <span v-if="isLoggedIn"><a class="button is-light" @click="logout">Logout</a></span>
+            <span v-if="isAuthenticated">
+              <router-link to="/profile" class="button is-light">Profile</router-link>
+              <a class="button is-light" @click="logout">Logout</a>
+            </span>
           </div>
         </div>
       </div>
@@ -71,39 +72,31 @@ export default {
   name: 'Navigation',
   data() {
     return {
-      // links: [
-      //   {
-      //     id: 0,
-      //     text: 'Hello World',
-      //     page: '/HelloWorld',
-      //   },
-      //   {
-      //     id: 1,
-      //     text: 'Home',
-      //     page: '/Home',
-      //   },
-      //   {
-      //     id: 2,
-      //     text: 'About',
-      //     page: '/About',
-      //   },
-      //   {
-      //     id: 3,
-      //     text: 'Contact',
-      //     page: '/Contact',
-      //   },
-      // ],
+      isAuthenticated: false,
+      profile: {}
     };
   },
-  computed: {
-    isLoggedIn: function() {return this.$store.getters.isLoggedIn}
+
+   async created() {
+    try {
+      await this.$auth.renewTokens();
+    } catch (err) {
+      throw(err);
+    }
   },
-  methods: {
-    logout: function() {
-      this.$store.dispatch('logout')
-      .then(() => {
-        this.$router.push('/login')
-      })
+  
+ 
+   methods: {
+    login() {
+      this.$auth.login();
+    },
+    logout() {
+      this.$auth.logOut();
+      this.$router.push({ path: "/" });
+    },
+    handleLoginEvent(data) {
+      this.isAuthenticated = data.loggedIn;
+      this.profile = data.profile;
     }
   }
 };
@@ -117,7 +110,7 @@ export default {
 
 #datahub-navbar .navbar-item {
   color: #312CA3;
-  font-size: 1.2em;
+  font-size: 1.1rem;
 }
 
 .navbar.no-height-restriction img {
@@ -158,6 +151,11 @@ export default {
 }
 
 #datahub-navbar > div.navbar-end > div > div > span > a {
+    color: #312CA3;
+    font-size: 1.1rem;
+}
+
+#datahub-navbar > div.navbar-end > div > div > span > button {
     color: #312CA3;
     font-size: 1.1rem;
 }

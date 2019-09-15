@@ -1,21 +1,26 @@
 <template>
-  <div>
-      <h1>This Page is protected by {{username}} </h1>
+  <div v-if="profile">
+      <div>
+      <h1>This Page is protected by {{profile.name}} </h1>
+      <p> {{ profile.email}} </p> 
+    </div>
+    <div>
+  <pre> {{ JSON.stringify(profile, null, 2)}} </pre>  
   </div>
+</div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      username: '',
-    }
+      profile: this.$auth.profile
+    };
   },
-
-  created: function() {
-    this.username = this.$store.getters.getUserName;
-    console.log("suprise");
-    
+  methods: {
+    handleLoginEvent(data) {
+      this.profile = data.profile;
     }
+  }
 }
 </script>
