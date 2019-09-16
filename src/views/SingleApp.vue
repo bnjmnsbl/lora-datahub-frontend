@@ -4,20 +4,27 @@
     
     <h1 class="title"> {{ appName}} </h1>
 
-    <article v-for="sensors in info" :key="sensors._id"> 
-      <p> {{sensors.devId}}</p>
+    <article v-for="sensor in info" :key="sensor._id" class="sensorMediaObject"> 
+       
+       <SensorMediaObject :data="sensor" />
+    
     </article>
-    <p v-for="payloads in deviceData[0]" :key="payloads">{{payloads.payload}}</p>
+    <p v-for="payloads in deviceData[0]" :key="payloads._id">{{payloads.payload}}</p>
     </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import SensorMediaObject from '@/components/SensorMediaObject.vue';
 
+  
 export default {
   name: 'home',
-     data() {
+  components: {
+    SensorMediaObject
+  },
+  data() {
     return {
       info: null,
       deviceData: [],
@@ -28,19 +35,16 @@ export default {
       appName: String
       
   },
-  components: {
-    
-  },
 
   
   mounted() {
-    let url = 'http://localhost:3000'
-    //let url = 'http://localhost:3000/api/devices/' + this.id;
-   
+    const url = 'http://localhost:3000'
+    
     axios
       .get(`${url}/api/devices/${this.id}`)
       .then(response => {
         this.info = response.data;
+       
         let apiCalls = [];
         response.data.forEach(el=> {
           apiCalls.push(axios.get(`${url}/api/payloads/${el._id}`))
@@ -69,10 +73,23 @@ export default {
   margin-top: 3rem;
 }
 
+.title {
+  color: #f64c72;
+  text-transform: uppercase;
+}
 .about-container {
   max-width: 600px;
   margin: auto;
   text-align: left;
+}
+
+.sensorMediaObject:hover {
+  background-color: #f64c72!important;
+
+}
+
+.sensorMediaObject:nth-child(even) {
+    background-color: #F4F5FA;
 }
 </style>
 

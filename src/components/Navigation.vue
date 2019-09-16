@@ -5,6 +5,7 @@
     role="navigation"
     aria-label="main navigation"
   >
+  <div class="container">
     <div class="navbar-brand">
       <router-link
         class="navbar-item"
@@ -62,7 +63,7 @@
         </div>
       </div>
     </div>
-
+    </div>
   </nav>
 </template>
 
@@ -105,7 +106,11 @@ export default {
 <style>
 .navbar {
   background-color: #F4F5FA;
+  
+}
 
+.container{
+  max-width: 900px;
 }
 
 #datahub-navbar .navbar-item {

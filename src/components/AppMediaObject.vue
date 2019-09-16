@@ -9,14 +9,10 @@
     <div class="media-content">
       <div class="content">
           <strong>
-            <router-link :to="{ name: 'apps', params: {id: data._id, appName: data.appId } }" class="appheadline blue">
-              <!-- ***:to="'app/' + data._id" class="navbar-item blue"> -->
-              
-             
-            {{ data.appId }}</router-link>
-            <!-- <span class="tag is-small">#{{ data.uniqueId }}</span> -->
-            </strong>
-         
+            <router-link :to="{ name: 'apps', params: {id: data._id, appName: data.appId } }" class="appheadline blue"> 
+              {{ data.appId }}
+            </router-link>
+          </strong>
           <p class="appContentText">
           {{ data.description }} </p>
             <small class="is-size-7"> Location: {{ data.locationName }}

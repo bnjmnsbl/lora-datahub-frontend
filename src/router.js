@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Home from './views/Home.vue';
 import About from './views/About.vue';
 import SingleApp from './views/SingleApp.vue';
+import SingleSensor from './views/SingleSensor.vue';
 import Login from './views/Login.vue';
 import Signup from './views/Signup.vue';
 import Profile from './views/Profile.vue';
@@ -28,6 +29,12 @@ let router = new Router({
     { path: '/app/:id', 
       name: 'apps',
       component: SingleApp,
+      props: true,
+     
+    },
+    { path: '/sensors/:id', 
+      name: 'sensors',
+      component: SingleSensor,
       props: true,
      
     },
