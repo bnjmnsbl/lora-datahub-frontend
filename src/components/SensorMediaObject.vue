@@ -1,11 +1,11 @@
 <template>
-      <router-link :to="{ name: 'sensors', params: {id: data._id } }" class="appheadline blue"> 
+      <router-link :to="{ name: 'sensors', params: {id: data._id, devId: data.devId } }" class="appheadline blue"> 
      
      <!-- { name: 'sensors', params: {data_id: data._id} }" class="appheadline blue"> --> 
     <div class="sensorContainer">
      
        <h2 class="sensorTitle"><strong>{{data.devId}}</strong></h2>
-       
+       <p>{{data}}</p>
     </div>
      </router-link>
 </template>
@@ -19,6 +19,8 @@ export default {
     data: Object,
   },
 };
+
+
 </script>
 <style scoped>
 .sensorContainer {

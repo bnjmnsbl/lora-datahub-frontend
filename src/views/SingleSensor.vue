@@ -2,7 +2,7 @@
   <div class="about">
     <div class="about-container">
     
-    <h1 class="title"> SingleSensor Name </h1>
+    <h1 class="title"> {{this.devId}} </h1>
     <p v-for="payload in payloads" :key="payload._id"> {{payload.payload}}</p>
 
     </div>
@@ -24,7 +24,7 @@ export default {
 
  props: {
       id: String,
-
+    devId: String
       
   },
   mounted() {
@@ -34,7 +34,7 @@ export default {
       .get(`${url}/api/payloads/${this.id}`)
       .then(response => {
         this.payloads = response.data;
-        console.dir(this.payload);
+      
         })
     
   }
