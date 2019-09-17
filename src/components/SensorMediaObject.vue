@@ -1,7 +1,6 @@
 <template>
-      <router-link :to="{ name: 'sensors', params: {id: data._id, devId: data.devId } }" class="appheadline blue"> 
+    <router-link :to="{ name: 'sensors', params: {id: data._id, devId: data.devId } }" class="appheadline blue"> 
      
-     <!-- { name: 'sensors', params: {data_id: data._id} }" class="appheadline blue"> --> 
     <div class="sensorContainer">
            <span class="icon is-small">
         <i class="fa fa-wifi padded" />
@@ -32,6 +31,7 @@ export default {
 .sensorTitle {
     text-transform: uppercase;
     font-size: 1.2rem;
+    padding-top:0.75rem;
 }
 
 .padded {

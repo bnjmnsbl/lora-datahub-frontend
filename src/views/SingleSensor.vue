@@ -1,9 +1,12 @@
 <template>
   <div class="about">
     <div class="about-container">
-    
-    <h1 class="title"> {{this.devId}} </h1>
-
+ 
+    <h1 class="title"> {{deviceId}} </h1>
+    <a :href="'http://localhost:3000/api/payloads/' + this.deviceId" target="_blank" title="REST API for this device" class="apiLink">
+      <i class="fa fa-download aligned"></i>   
+    </a>
+    <!--should generate CSV as well?-->
     <table class="dataTable">
       <thead>
         <tr>
@@ -37,8 +40,8 @@ export default {
   data() {
     return {
       payloads: null,
-      tableKeys: ["Time"]
-      
+      tableKeys: ["Time"],
+      deviceId: null
     };
   },
 
@@ -47,8 +50,17 @@ export default {
     devId: String
       
   },
+  
   mounted() {
     const url = 'http://localhost:3000'
+    
+    axios
+      .get(`${url}/api/devicename/${this.id}`)
+      .then(res => { 
+        this.deviceId = res.data.devId
+       
+        }); 
+
     axios
       .get(`${url}/api/payloads/${this.id}`)
       .then(response => {
@@ -57,6 +69,8 @@ export default {
         
         //Adds timestamp to first place in Array
         this.tableKeys.unshift("Time");
+        
+  
         })
     
 
@@ -72,6 +86,25 @@ export default {
   margin-top: 3rem;
 }
 
+h1 {
+  display: inline-block;
+}
+
+i {
+  float:right;
+  margin-right: 7rem;
+  padding-top: 0.8rem;
+ 
+}
+
+.apiLink {
+  color: black;
+}
+.inline {
+  display:inline-block;
+  margin-bottom: 2rem;
+
+}
 .dataTable th {
   text-align: center!important;
  

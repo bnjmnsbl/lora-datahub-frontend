@@ -78,14 +78,6 @@ export default {
             .then(() => this.$router.push('/'))
             .catch(err => {throw (err)});
 
-            // axios({
-            //     method: 'post',
-            //     url: 'http://localhost:3000/api/users',
-            //     data: this.$store.getters.getUser
-            //     }   
-            // ).then(function(response){
-            //     console.dir(response);
-            // });
         }
     }
 }
