@@ -3,9 +3,10 @@
      
      <!-- { name: 'sensors', params: {data_id: data._id} }" class="appheadline blue"> --> 
     <div class="sensorContainer">
-     
+           <span class="icon is-small">
+        <i class="fa fa-wifi padded" />
        <h2 class="sensorTitle"><strong>{{data.devId}}</strong></h2>
-       <p>{{data}}</p>
+     </span>
     </div>
      </router-link>
 </template>
@@ -25,6 +26,7 @@ export default {
 <style scoped>
 .sensorContainer {
    padding: 2rem; 
+
 }
 
 .sensorTitle {
@@ -32,4 +34,9 @@ export default {
     font-size: 1.2rem;
 }
 
+.padded {
+  margin-left: 4rem;
+  margin-right: 2rem;
+  position: relative;
+}
 </style>

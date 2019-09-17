@@ -9,7 +9,7 @@
        <SensorMediaObject :data="sensor" />
     
     </article>
-    <p v-for="payloads in deviceData[0]" :key="payloads._id">{{payloads.payload}}</p>
+   
     </div>
   </div>
 </template>

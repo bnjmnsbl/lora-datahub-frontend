@@ -1,7 +1,7 @@
 <template>
   <div v-if="profile">
       <div>
-      <h1>This Page is protected by {{profile.name}} </h1>
+      <h1>Profile page: {{profile.name}} </h1>
       <p> {{ profile.email}} </p> 
     </div>
     <div>
