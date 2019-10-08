@@ -38,7 +38,9 @@ export default {
 
   
   mounted() {
-    const url = 'http://localhost:3000'
+   // const url = 'http://localhost:3000'
+   const url = 'https://bnjmn.uber.space'
+   
     
     axios
       .get(`${url}/api/devices/${this.id}`)
