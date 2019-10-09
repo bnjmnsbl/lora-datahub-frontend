@@ -1,15 +1,15 @@
 
 import auth0 from 'auth0-js';
 import { EventEmitter } from 'events';
-import authConfig from '../../auth_config.json';
+//import authConfig from '../../auth_config.json';
 
 const localStorageKey = 'loggedIn';
 const loginEvent = 'loginEvent';
 
 const webAuth = new auth0.WebAuth({
-  domain: authConfig.domain,
+  domain: process.env.VUE_APP_AUTH0_DOMAIN,
   redirectUri: `${window.location.origin}/callback`,
-  clientID: authConfig.clientId,
+  clientID: process.env.VUE_APP_AUTH0_CLIENTID,
   responseType: 'token id_token',
   scope: 'openid profile email'
 });
