@@ -3,7 +3,7 @@
     <div class="about-container">
  
     <h1 class="title"> {{deviceId}} </h1>
-    <a :href="'http://localhost:3000/api/payloads/' + id" target="_blank" title="REST API for this device" class="apiLink">
+    <a :href="'https://bnjmn.uber.space' + id" target="_blank" title="REST API for this device" class="apiLink">
       <i class="fa fa-download aligned"></i>   
     </a>
     <!--should generate CSV as well?-->
@@ -42,6 +42,7 @@ export default {
       payloads: null,
       tableKeys: ["Time"],
       deviceId: null
+      
     };
   },
 
@@ -52,7 +53,7 @@ export default {
   },
   
   mounted() {
-    const url = 'http://localhost:3000'
+    const url = 'https://bnjmn.uber.space'
     
     axios
       .get(`${url}/api/devicename/${this.id}`)

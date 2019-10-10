@@ -91,8 +91,9 @@ export default {
     };
   },
   mounted() {
+    const url = 'https://bnjmn.uber.space';
     axios
-      .get('http://localhost:3000/api/apps')
+      .get(`${url}/api/apps`)
       // eslint-disable-next-line no-return-assign
       .then(response => (this.info = response.data));
   },
