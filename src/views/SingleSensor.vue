@@ -3,7 +3,7 @@
     <div class="about-container">
  
     <h1 class="title"> {{deviceId}} </h1>
-    <a :href="'https://bnjmn.uber.space' + id" target="_blank" title="REST API for this device" class="apiLink">
+    <a :href="'https://bnjmn.uber.space/api/payloads/' + id" target="_blank" title="REST API for this device" class="apiLink">
       <i class="fa fa-download aligned"></i>   
     </a>
     <!--should generate CSV as well?-->

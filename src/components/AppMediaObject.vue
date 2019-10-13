@@ -3,7 +3,7 @@
     <figure class="media-left">
       <img
         class="image is-64x64"
-        src="../assets/citylab_square_neon.jpg"
+        src="../assets/images/citylab_logo.png"
       >
     </figure>
     <div class="media-content">
