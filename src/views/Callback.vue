@@ -1,5 +1,3 @@
-<!-- src/components/Callback.vue -->
-
 <template>
   <div>
     <p>Loading...</p>
