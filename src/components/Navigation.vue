@@ -146,23 +146,13 @@ export default {
 #datahub-navbar > div.navbar-end > div > div > a.button.is-primary {
   color: #312CA3;
   border-color: #312CA3;
-  font-size: 1.1rem;
   background-color: transparent;
 }
 
-#datahub-navbar > div.navbar-end > div > div > a.button.is-light {
-    color: #312CA3;
-    font-size: 1.1rem;
-}
-
-#datahub-navbar > div.navbar-end > div > div > span > a {
-    color: #312CA3;
-    font-size: 1.1rem;
-}
 
 #datahub-navbar > div.navbar-end > div > div > span > button {
     color: #312CA3;
-    font-size: 1.1rem;
+    
 }
 
 </style>

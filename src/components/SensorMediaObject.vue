@@ -2,10 +2,10 @@
     <router-link :to="{ name: 'sensors', params: {id: data._id, devId: data.devId } }" class="appheadline blue"> 
      
     <div class="sensorContainer">
-           <span class="icon is-small">
-        <i class="fa fa-wifi padded" />
+      <!-- <span class="icon is-small"> -->
+       <i class="fa fa-wifi float-left" />
        <h2 class="sensorTitle"><strong>{{data.devId}}</strong></h2>
-     </span>
+     <!-- </span> -->
     </div>
      </router-link>
 </template>
@@ -22,7 +22,7 @@ export default {
 
 
 </script>
-<style scoped>
+<style>
 .sensorContainer {
    padding: 2rem; 
 
@@ -31,12 +31,13 @@ export default {
 .sensorTitle {
     text-transform: uppercase;
     font-size: 1.2rem;
-    padding-top:0.75rem;
+    padding-top:0.5rem;
+   
 }
 
-.padded {
-  margin-left: 4rem;
+
+.float-left {
+  float: left;
   margin-right: 2rem;
-  position: relative;
 }
 </style>
