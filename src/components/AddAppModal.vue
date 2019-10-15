@@ -6,20 +6,25 @@
 
           <div class="modal-header">
             <slot name="header">
+               <button class="modal-default-button" @click="$emit('close')">
+                X
+              </button>
              <h3> Add a new App </h3>
             </slot>
           </div>
 
           <div class="modal-body">
             <slot name="body">
-              Coming soon...
+            <input v-model="AppIDbyUser" class="userInput bluebox" placeholder="App ID">
+            <input v-model="AppKeybyUser" class="userInput bluebox" placeholder="App Key">
+            <textarea v-model="DescriptionbyUser" class="textarea userInput bluebox" rows="3" placeholder="Description"></textarea> 
             </slot>
           </div>
 
           <div class="modal-footer">
             <slot name="footer">
-              <button class="modal-default-button" @click="$emit('close')">
-                OK
+             <button class="modal-save-button" @click="saveUserInput">
+                Save
               </button>
             </slot>
           </div>
@@ -29,7 +34,25 @@
   </transition>
 </template>
 
-<style scoped>
+<script>
+export default {
+  data() {
+    return {
+      AppIDbyUser: '',
+      AppKeybyUser: '',
+      DescriptionbyUser: ''
+    };
+  },
+  methods: {
+    saveUserInput() {
+      alert('coming soon');
+    }
+  }
+}
+</script>
+
+
+<style>
 .modal-mask {
   position: fixed;
   z-index: 9998;
@@ -60,15 +83,31 @@
 
 .modal-header h3 {
   margin-top: 0;
-  color: #42b983;
+  color: #312CA3;
 }
 
 .modal-body {
   margin: 20px 0;
 }
 
+.userInput {
+  padding: 0.25rem;
+  margin: 0.5rem;
+  width: 200px;
+}
+textarea {
+  width: 200px;
+}
+
 .modal-default-button {
   float: right;
+  color: #312CA3;
+  border: 1px solid;
+}
+
+.modal-save-button {
+   color: #312CA3;
+   border: 1px solid;
 }
 
 /*

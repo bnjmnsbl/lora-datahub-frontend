@@ -44,6 +44,7 @@ export default {
 </script>
 <style>
 
+
 .profileContainer {
   padding-top: 2rem;
   max-width: 800px;
@@ -78,5 +79,9 @@ export default {
 .userMail {
   font-size: 1.2rem;
   text-align: left;
+}
+
+button.bluebox {
+  margin-top: 8rem;
 }
 </style>
