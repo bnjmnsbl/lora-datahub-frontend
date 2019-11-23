@@ -35,7 +35,6 @@ export default {
    
 }
 
-
 .float-left {
   float: left;
   margin-right: 2rem;

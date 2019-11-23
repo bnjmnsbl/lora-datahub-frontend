@@ -6,6 +6,9 @@ import store from './store'
 import Axios from 'axios'
 import AuthPlugin from './plugins/auth';
 
+
+Vue.use(require('vue-moment'));
+
 Vue.use(AuthPlugin);
 //this enables other components to access Axios via this.$http
 Vue.prototype.$http = Axios;
