@@ -63,7 +63,7 @@ export default {
         }); 
 
     axios
-      .get(`${url}/api/payloads/${this.id}`)
+      .get(`${url}/api/latestpayloads/${this.id}`)
       .then(response => {
         this.payloads = response.data;
         this.tableKeys = Object.keys(this.payloads[0].payload)
