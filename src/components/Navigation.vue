@@ -44,23 +44,14 @@
           About
         </router-link>
       </div>
+      
+       <div v-if="!isAuthenticated" class="navbar-end">
+        <a class="navbar-item" @click.prevent="login">Login</a>
+       </div>
 
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <span v-if="!isAuthenticated">
-            <!--router-link to="/signup" class="button is-light">
-              <strong>Sign up</strong>
-            </router-link-->
-            
-            <div class="navbar-item" @click.prevent="login">Login</button>
-            </span>
-            <span v-if="isAuthenticated">
-              <router-link to="/profile" class="navbar-item">Profile</router-link>
-              <a class="navbar-item" @click="logout">Logout</a>
-            </span>
-          </div>
-        </div>
+      <div v-if="isAuthenticated" class="navbar-end">
+         <router-link to="/profile" class="navbar-item">Profile</router-link>
+          <a class="navbar-item" @click="logout">Logout</a>
       </div>
     </div>
     </div>
@@ -108,6 +99,7 @@ export default {
   background-color: #F4F5FA;
   
 }
+
 
 .container{
   max-width: 900px;
