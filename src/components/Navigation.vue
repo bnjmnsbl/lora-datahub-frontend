@@ -53,10 +53,10 @@
               <strong>Sign up</strong>
             </router-link-->
             
-            <button class="navbar-item" @click.prevent="login">Login</button>
+            <div class="navbar-item" @click.prevent="login">Login</button>
             </span>
             <span v-if="isAuthenticated">
-              <router-link to="/profile" class="button is-light">Profile</router-link>
+              <router-link to="/profile" class="navbar-item">Profile</router-link>
               <a class="navbar-item" @click="logout">Logout</a>
             </span>
           </div>
